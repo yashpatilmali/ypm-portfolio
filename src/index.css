@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom retro gaming scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #070b14;
+}
+::-webkit-scrollbar-thumb {
+  background: #E52521;
+  border: 2px solid #991B1B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FCD116;
+  border-color: #B45309;
+}
+
+/* Animated Gradient Borders */
+.animated-gradient-border {
+  position: relative;
+  background: linear-gradient(60deg, #E52521, #FCD116, #38BDF8, #10B981, #E52521);
+  background-size: 300% 300%;
+  animation: gradientRotate 6s ease infinite;
+}
+
+@keyframes gradientRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glowing Neon Rings */
+.glow-gold {
+  box-shadow: 0 0 25px rgba(252, 209, 22, 0.45), inset 0 0 15px rgba(252, 209, 22, 0.2);
+}
+.glow-red {
+  box-shadow: 0 0 25px rgba(229, 37, 33, 0.5), inset 0 0 15px rgba(229, 37, 33, 0.2);
+}
+.glow-blue {
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.45), inset 0 0 15px rgba(56, 189, 248, 0.2);
+}
+.glow-green {
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.45), inset 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+/* Light Sheen Sweep Across Cards */
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg);
+  animation: shimmerSweep 6s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%) rotate(30deg); }
+  30%, 100% { transform: translateX(100%) rotate(30deg); }
+}
+
+/* Sunburst Light Ray Rotation */
+@keyframes sunburstSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.animate-sunburst {
+  animation: sunburstSpin 25s linear infinite;
+}
+
+/* Parallax Cloud Glides */
+@keyframes driftLeftToRight1 {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120vw); }
+}
+@keyframes driftLeftToRight2 {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120vw); }
+}
+.animate-drift-slow {
+  animation: driftLeftToRight1 45s linear infinite;
+}
+.animate-drift-medium {
+  animation: driftLeftToRight2 32s linear infinite;
+}
+
+/* Torch Flame Dancing */
+@keyframes torchFlicker {
+  0%, 100% { transform: scale(1) rotate(-1deg); filter: drop-shadow(0 0 12px #FF5722); }
+  25% { transform: scale(1.08, 0.95) rotate(2deg); filter: drop-shadow(0 0 20px #FF9800); }
+  50% { transform: scale(0.96, 1.05) rotate(-2deg); filter: drop-shadow(0 0 14px #FF5722); }
+  75% { transform: scale(1.04, 0.98) rotate(1deg); filter: drop-shadow(0 0 18px #FFC107); }
+}
+.animate-torch {
+  animation: torchFlicker 0.45s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+/* Floating Coin 3D Spin */
+@keyframes coinSpin3D {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(180deg); }
+  100% { transform: rotateY(360deg); }
+}
+.animate-coin-spin {
+  animation: coinSpin3D 1.6s linear infinite;
+  transform-style: preserve-3d;
+}
+
+/* Pulse Star Twinkle */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
