@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StartScreen from './components/StartScreen';
 import GameHUD from './components/GameHUD';
 import PlayableStage from './components/PlayableStage';
 import AmbientCanvas from './components/AmbientCanvas';
+import MobileRestrictedScreen from './components/MobileRestrictedScreen';
 import { sound } from './audio/soundEngine';
 
 export default function App() {
@@ -11,7 +12,26 @@ export default function App() {
   const [score, setScore] = useState(1200);
   const [isAudioMuted, setIsAudioMuted] = useState(sound.isMuted);
   const [isMusicMuted, setIsMusicMuted] = useState(sound.isMusicMuted);
-  const [showRotateTip, setShowRotateTip] = useState(true);
+
+  const checkIsMobile = () => {
+    if (typeof window === 'undefined') return false;
+    const ua = navigator.userAgent || '';
+    const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+    const isTouchDevice = 'ontouchstart' in window || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+    const isSmallTouch = isTouchDevice && (window.innerWidth < 1024 || window.innerHeight < 600);
+    const isPhoneScreen = window.innerWidth < 900 || window.innerHeight < 500;
+    return Boolean(isMobileUA || isSmallTouch || isPhoneScreen);
+  };
+
+  const [isMobile, setIsMobile] = useState(checkIsMobile);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(checkIsMobile());
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Handle Coin Collection
   const handleCoinCollect = () => {
@@ -31,30 +51,14 @@ export default function App() {
     setIsMusicMuted(!musicOn);
   };
 
+  if (isMobile) {
+    return <MobileRestrictedScreen />;
+  }
+
   return (
     <div className="min-h-screen bg-[#070b14] text-white select-none selection:bg-[#E52521] selection:text-white relative flex flex-col font-pixel">
       {/* Background Living Ambient Starfield & Particles */}
       <AmbientCanvas />
-
-      {/* Mobile Portrait Orientation Tip (Automatic for phones held vertically) */}
-      {showRotateTip && (
-        <aside
-          aria-label="Orientation suggestion"
-          className="portrait:flex landscape:hidden md:hidden fixed bottom-3 left-3 right-3 z-50 bg-[#000000]/95 border-2 border-[#FCD116] text-[#FCD116] p-2.5 rounded-xl shadow-2xl items-center justify-between text-[10px] animate-pulse"
-        >
-          <div className="flex items-center gap-2">
-            <span className="text-base">🔄</span>
-            <span>Tip: Rotate horizontally (landscape) for arcade mode!</span>
-          </div>
-          <button
-            onClick={() => setShowRotateTip(false)}
-            className="w-5 h-5 bg-red-600 hover:bg-red-500 rounded-full text-white text-[10px] flex items-center justify-center font-bold ml-2 cursor-pointer shrink-0"
-            aria-label="Dismiss rotation tip"
-          >
-            ✕
-          </button>
-        </aside>
-      )}
 
       {!gameStarted ? (
         <StartScreen onStartGame={() => setGameStarted(true)} />
