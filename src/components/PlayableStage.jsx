@@ -887,7 +887,7 @@ export default function PlayableStage({ onCoinCollect }) {
               {/* PIPE 2: SKILLS */}
               {activePipeData === 'skills' && (
                 <div className="space-y-4">
-                  <div className="text-center text-[#FCD116] text-xs sm:text-sm font-bold">POWER-UP ABILITIES &amp; TECH STACK (FROM RESUME)</div>
+                  <div className="text-center text-[#FCD116] text-xs sm:text-sm font-bold">POWER-UP ABILITIES &amp; TECH STACK</div>
 
                   <div className="space-y-3.5">
                     {/* 1. Programming Languages */}
@@ -976,7 +976,7 @@ export default function PlayableStage({ onCoinCollect }) {
               {/* PIPE 3: PROJECTS */}
               {activePipeData === 'projects' && (
                 <div className="space-y-4">
-                  <div className="text-center text-[#FCD116] text-xs sm:text-sm font-bold">COMPLETED QUESTS &amp; PROJECTS (FROM RESUME)</div>
+                  <div className="text-center text-[#FCD116] text-xs sm:text-sm font-bold">COMPLETED QUESTS &amp; PROJECTS</div>
 
                   <div className="space-y-3.5 max-h-[55vh] overflow-y-auto pr-1">
                     {portfolioData.projects.map((proj, i) => (
@@ -1050,7 +1050,7 @@ export default function PlayableStage({ onCoinCollect }) {
               {/* PIPE 4: EXPERIENCE */}
               {activePipeData === 'experience' && (
                 <div className="space-y-4">
-                  <div className="text-center text-[#FCD116] text-xs sm:text-sm font-bold">WORK EXPERIENCE &amp; LEADERSHIP (FROM RESUME)</div>
+                  <div className="text-center text-[#FCD116] text-xs sm:text-sm font-bold">WORK EXPERIENCE &amp; LEADERSHIP</div>
 
                   <div className="space-y-3.5 max-h-[58vh] overflow-y-auto pr-1">
                     {/* Professional Work Experience */}
@@ -1199,7 +1199,7 @@ export default function PlayableStage({ onCoinCollect }) {
               {/* PIPE 6: EDUCATION */}
               {activePipeData === 'education' && (
                 <div className="space-y-4">
-                  <div className="text-center text-[#FCD116] text-xs sm:text-sm font-bold">ACADEMIC EDUCATION (FROM RESUME)</div>
+                  <div className="text-center text-[#FCD116] text-xs sm:text-sm font-bold">ACADEMIC EDUCATION</div>
 
                   <div className="space-y-3.5">
                     <div className="bg-slate-900 border-2 border-purple-500/70 p-5 rounded-xl space-y-3">
@@ -1228,7 +1228,7 @@ export default function PlayableStage({ onCoinCollect }) {
                       </div>
 
                       <div className="border-t border-slate-800 pt-3 space-y-2 text-xs">
-                        <div className="text-yellow-400 font-bold">KEY COURSEWORK &amp; CORE FOUNDATIONS (FROM RESUME):</div>
+                        <div className="text-yellow-400 font-bold">KEY COURSEWORK &amp; CORE FOUNDATIONS:</div>
                         <div className="flex flex-wrap gap-1.5">
                           {[
                             'Data Structures and Algorithms',

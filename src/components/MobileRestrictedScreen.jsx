@@ -1,7 +1,7 @@
 import React from 'react';
 import MarioCharacter from './MarioCharacter';
 import { portfolioData } from '../data/portfolioData';
-import { Mail, Laptop, ExternalLink } from 'lucide-react';
+import { Mail, Laptop } from 'lucide-react';
 import { Github, Linkedin } from './BrandIcons';
 
 export default function MobileRestrictedScreen() {
@@ -72,7 +72,7 @@ export default function MobileRestrictedScreen() {
           <div className="text-[10px] text-[#00E676] mb-2 font-bold">
             CONNECT WITH YASH:
           </div>
-          <div className="grid grid-cols-2 gap-2 text-[10px]">
+          <div className="grid grid-cols-3 gap-2 text-[10px]">
             <a
               href={portfolioData.personal.linkedin}
               target="_blank"
@@ -97,15 +97,6 @@ export default function MobileRestrictedScreen() {
             >
               <Mail size={14} />
               <span>EMAIL</span>
-            </a>
-            <a
-              href={portfolioData.personal.portfolioUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 p-2 bg-emerald-900/60 hover:bg-emerald-800 border border-emerald-500 rounded-lg text-white"
-            >
-              <ExternalLink size={14} />
-              <span>PORTFOLIO</span>
             </a>
           </div>
         </div>
